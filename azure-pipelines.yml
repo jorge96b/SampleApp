@@ -4,30 +4,6 @@ pr: none
 pool:
   vmImage: 'ubuntu-20.04'
 steps:
-- task: TriggerBuild@3
-  displayName: 'trigger App Build CI'
-  inputs:
-    definitionIsInCurrentTeamProject: true
-    buildDefinition: 'App Build CI'
-    queueBuildForUserThatTriggeredBuild: true
-    ignoreSslCertificateErrors: true
-    useSameSourceVersion: false
-    useCustomSourceVersion: false
-    useSameBranch: true
-    waitForQueuedBuildsToFinish: true
-    waitForQueuedBuildsToFinishRefreshTime: '10'
-    failTaskIfBuildsNotSuccessful: true
-    cancelBuildsIfAnyFails: false
-    treatPartiallySucceededBuildAsSuccessful: false
-    downloadBuildArtifacts: false
-    storeInEnvironmentVariable: true
-    authenticationMethod: 'OAuth Token'
-    password: '$(System.AccessToken)'
-    enableBuildInQueueCondition: false
-    dependentOnSuccessfulBuildCondition: false
-    dependentOnFailedBuildCondition: false
-    checkbuildsoncurrentbranch: false
-    failTaskIfConditionsAreNotFulfilled: false
 
 - task: DownloadPipelineArtifact@2
   displayName: 'download artifact App Build CI'
