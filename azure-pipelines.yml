@@ -8,7 +8,7 @@ pr:
 # Specifies which pool (Hosted or Self-hosted) to use for this pipeline. 
 # In this case it is in the scope of the pipeline, but you can use it at the stage or job level
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu-20.04'
 
 # Specific variables to use, in our case it is just one and at the pipeline level 
 variables:
@@ -41,11 +41,6 @@ steps:
   - script: |
       node node_modules/.bin/webdriver-manager update --versions.chrome=$(chromeDriverVersion) --gecko false --standalone false
     displayName: 'changing version of chromedriver to $(chromeDriverVersion)'
-
-
-  - script: | # Run e2e tests without update webdriver
-      npx --no-install ng e2e --webdriverUpdate=false
-    displayName: 'ng e2e tests'
 
   - task: PublishTestResults@2 # Publish tests results
     displayName: 'Publishing test results'
