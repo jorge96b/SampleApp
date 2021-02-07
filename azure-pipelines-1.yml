@@ -5,10 +5,6 @@ pool:
   vmImage: 'ubuntu-20.04'
 steps:
 
-- bash: |
-      mv $(Build.BinariesDirectory)/www $(System.DefaultWorkingDirectory)
-  displayName: 'mv $(Build.BinariesDirectory)/www $(System.DefaultWorkingDirectory)'
-
 #Installing cordova
 - bash: |
     sudo npm i -g cordova
