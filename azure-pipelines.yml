@@ -1,9 +1,14 @@
-trigger: ['master']
-pr: none
+# Disables CI builds entirely, then commits don't trigger a build
+trigger: none
 
+# Activates pull request trigger, so any pull request to the master trigger a build
+pr:
+- master
+
+# Specifies which pool (Hosted or Self-hosted) to use for this pipeline. 
+# In this case it is in the scope of the pipeline, but you can use it at the stage or job level
 pool:
   vmImage: 'ubuntu-20.04'
-steps:
 
 # Specific variables to use, in our case it is just one and at the pipeline level 
 variables:
